@@ -73,6 +73,4 @@ class ProductTestTest extends TestCase
         $this->product->setName("");
         $this->assertFalse($this->product->isValid());
     }
-
-
 }

@@ -37,5 +37,4 @@ class DBConnection
     {
         throw new Exception('Not implemented');
     }
-
 }

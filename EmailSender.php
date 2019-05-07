@@ -20,5 +20,4 @@ class EmailSender
     {
         throw new Exception('Not implemented');
     }
-
 }

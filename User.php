@@ -182,5 +182,4 @@ class User
         $this->lastname = $lastname;
         return $this;
     }
-
 }

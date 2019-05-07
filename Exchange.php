@@ -195,5 +195,4 @@ class Exchange
         $this->dbConnection = $dbConnection;
         return $this;
     }
-
 }

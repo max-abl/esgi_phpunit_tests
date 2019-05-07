@@ -269,5 +269,4 @@ class ExchangeTest extends TestCase
 
         $this->assertFalse($this->exchange->isValid());
     }
-
 }

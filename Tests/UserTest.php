@@ -95,6 +95,4 @@ class UserTest extends TestCase
         $this->user->setBirthdate(new DateTime('2010-01-01'));
         $this->assertFalse($this->user->isValid());
     }
-
-
 }

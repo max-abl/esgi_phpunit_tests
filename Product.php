@@ -102,5 +102,4 @@ class Product
         $this->owner = $owner;
         return $this;
     }
-
 }
