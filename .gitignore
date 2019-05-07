@@ -1,0 +1,8 @@
+# Libs
+/vendor
+
+# JetBrains
+/.idea
+
+# MAC
+.DS_Store
