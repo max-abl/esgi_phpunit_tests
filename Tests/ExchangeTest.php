@@ -58,8 +58,12 @@ class ExchangeTest extends TestCase
         $dbConnection->expects($this->any())->method('saveExchange')->willReturn(true);
 
         // Dates
-        $beginDate = new DateTime("2018-01-01");
-        $endDate = new DateTime("2018-02-02");
+        // A Rendre non fixe
+        $beginDate = new DateTime();
+        $beginDate->modify("+1 day");
+
+        $endDate = new DateTime();
+        $endDate->modify("+2 day");
 
         // Initialisation
         $this->exchange = new Exchange();
@@ -185,8 +189,8 @@ class ExchangeTest extends TestCase
         $emailSender->expects($this->never())->method('sendEmail')->willReturn(true);
         $this->exchange->setEmailSender($emailSender);
 
-        $this->exchange->setBeginDate(new DateTime("2018-01-01"));
-        $this->exchange->setEndDate(new DateTime("2017-01-01"));
+        $this->exchange->setBeginDate((new DateTime())->modify("+2 day"));
+        $this->exchange->setEndDate((new DateTime())->modify("+1 day"));
 
         $this->assertFalse($this->exchange->isDateValid());
     }
