@@ -1,6 +1,10 @@
 {
   "autoload": {
-    "classmap": ["./"]
+    "classmap": [
+      "./",
+      "./Formation",
+      "ECommerce"
+    ]
   },
   "require": {
     "phpunit/phpunit": "^8.1"
