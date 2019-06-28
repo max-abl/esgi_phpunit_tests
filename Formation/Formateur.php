@@ -9,10 +9,36 @@
 class Formateur
 {
 
-    private $idFormateur;  
+    /**
+     * @var int
+     */
+    private $idFormateur;
+
+    /**
+     * @var string
+     */
     private $nomFormateur;
+
+    /**
+     * @var string
+     */
     private $prenomFormateur;
+
+    /**
+     * @var Matiere
+     */
     private $matiereFormateur;
+
+    // Constructor
+
+    /**
+     * Formateur constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    // Getters and setters
 
     /**
      * @return mixed
@@ -77,8 +103,5 @@ class Formateur
     {
         $this->matiereFormateur = $matiereFormateur;
     }
-
-
-
 
 }

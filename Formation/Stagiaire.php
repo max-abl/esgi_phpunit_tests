@@ -9,11 +9,79 @@
 class Stagiaire
 {
 
-    private $idStagiaire;  
+    /**
+     * @var int
+     */
+    private $idStagiai;
+
+    /**
+     * @var BDConnection
+     */
+    private $database;
+    
+    /**
+ * @var string
+     */
     private $nomStagiaire;
+
+    /**
+     * @var string
+     */
     private $prenomStagiaire;
+
+    /**
+     * @var Formation
+     */
     private $formationStagiaire;
+
+    /**
+     * @var int
+     */
     private $ageStagiaire;
+
+    // Constructor
+
+    /**
+     * Stagiaire constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    // Methods
+
+    /**
+     * @param $formation
+     * @return bool
+     */
+    public function setFormationStagiaire($formation): bool
+    {
+        if ($formation->ageMinimum > $this->ageStagiaire && !$this->formationStagiaire) {
+            $this->formationStagiaire = $formation;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStagiaireValid() : bool {
+        return ($this->formation) ? true : false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function saveStagiaire() : bool
+    {
+        if($this->isStagiaireValid){
+            $this->databases->saveStagiaire($this);
+        }
+    }
+
+    // Getters and setters
 
     /**
      * @return mixed
@@ -63,25 +131,4 @@ class Stagiaire
         $this->prenomStagiaire = $prenomStagiaire;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getFormationStagiaire()
-    {
-        return $this->formationStagiaire;
-    }
-
-    /**
-     * @param mixed $formationStagiaire
-     */
-    public function setClasseStagiaire($formation): Boolean
-    {
-        if($formation->ageMinimum > $this->ageStagiaire && !$this->formationStagiaire){
-            $this->formationStagiaire = $formation;
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
 }

@@ -8,9 +8,9 @@
 
 class Salle
 {
-
     private $idSalle;  
     private $numSalle;
+    private $occupe;
 
     /**
      * @return mixed

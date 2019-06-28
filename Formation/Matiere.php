@@ -9,8 +9,26 @@
 class Matiere
 {
 
+    /**
+     * @var int
+     */
     private $idMatiere;
+
+    /**
+     * @var string
+     */
     private $labelle;
+
+
+    // Constructor
+    /**
+     * Matiere constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    // Getters and setters
 
     /**
      * @return mixed

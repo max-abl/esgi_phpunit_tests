@@ -35,7 +35,7 @@ class Exchange
     private $emailSender;
 
     /**
-     * @var DBConnection
+     * @var BDConnection
      */
     private $dbConnection;
 

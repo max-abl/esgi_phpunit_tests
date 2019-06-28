@@ -54,7 +54,7 @@ class ExchangeTest extends TestCase
         $emailSender->expects($this->any())->method('sendEmail')->willReturn(true);
 
         // Mock DBConnection
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->any())->method('saveExchange')->willReturn(true);
 
         // Dates
@@ -106,7 +106,7 @@ class ExchangeTest extends TestCase
         $this->exchange->setProduct($product);
 
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -136,7 +136,7 @@ class ExchangeTest extends TestCase
         $this->exchange->setReceiver($receiverMinor);
 
         // Called Once
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->once())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -158,7 +158,7 @@ class ExchangeTest extends TestCase
     public function testIsDateValidTrue()
     {
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -180,7 +180,7 @@ class ExchangeTest extends TestCase
     public function testIsDateValidFalse()
     {
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -206,7 +206,7 @@ class ExchangeTest extends TestCase
     function testIsValidTrue()
     {
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -234,7 +234,7 @@ class ExchangeTest extends TestCase
         $this->exchange->setProduct($receiver);
 
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 
@@ -262,7 +262,7 @@ class ExchangeTest extends TestCase
         $this->exchange->setProduct($product);
 
         // Never called
-        $dbConnection = $this->createMock(DBConnection::class);
+        $dbConnection = $this->createMock(BDConnection::class);
         $dbConnection->expects($this->never())->method('saveExchange')->willReturn(true);
         $this->exchange->setDbConnection($dbConnection);
 

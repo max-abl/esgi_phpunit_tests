@@ -8,6 +8,18 @@ class Institut
     private $adresse;
     private $ville;
     private $codePostal;
+    
+    /**
+     * @var array : Formation
+     */
+    private $formations;
+
+    /**
+     * Institut constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * @return mixed
@@ -88,5 +100,9 @@ class Institut
     {
         $this->codePostal = $codePostal;
     }
+
+
+
+
 
 }
