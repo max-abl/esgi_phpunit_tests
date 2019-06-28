@@ -8,10 +8,16 @@
 
 class Formation
 {
+
     /**
-     * ID Formation : Number
+     * @var int
      */
     private $idFormation;
+
+    /**
+     * @var Institut
+     */
+    private $institut;
 
     /**
      * @var string
@@ -39,11 +45,6 @@ class Formation
     private $dateFin;
 
     /**
-     * @var Institut
-     */
-    private $institut;
-
-    /**
      * Formation constructor.
      * @param $idFormation
      */
@@ -57,26 +58,53 @@ class Formation
     /**
      * @return bool
      */
-    public function dateIsValid() : bool {
+    public function dateIsValid(): bool
+    {
         return ($this->dateDebut instanceof DateTime) && ($this->dateFin instanceof DateTime) && $this->dateDebut < $this->dateFin;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getIdFormation()
+    public function isValid()
+    {
+        if ($this->dateIsValid() && $this->getInstitut()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdFormation(): int
     {
         return $this->idFormation;
     }
 
     /**
-     * @param mixed $idFormation
-     * @return Formation
+     * @param int $idFormation
      */
-    public function setIdFormation($idFormation)
+    public function setIdFormation(int $idFormation): void
     {
         $this->idFormation = $idFormation;
-        return $this;
+    }
+
+    /**
+     * @return Institut
+     */
+    public function getInstitut(): Institut
+    {
+        return $this->institut;
+    }
+
+    /**
+     * @param Institut $institut
+     */
+    public function setInstitut(Institut $institut): void
+    {
+        $this->institut = $institut;
     }
 
     /**
@@ -89,12 +117,10 @@ class Formation
 
     /**
      * @param string $name
-     * @return Formation
      */
-    public function setName(string $name): Formation
+    public function setName(string $name): void
     {
         $this->name = $name;
-        return $this;
     }
 
     /**
@@ -107,12 +133,10 @@ class Formation
 
     /**
      * @param array $stagiaires
-     * @return Formation
      */
-    public function setStagiaires(array $stagiaires): Formation
+    public function setStagiaires(array $stagiaires): void
     {
         $this->stagiaires = $stagiaires;
-        return $this;
     }
 
     /**
@@ -125,12 +149,10 @@ class Formation
 
     /**
      * @param int $ageMinimum
-     * @return Formation
      */
-    public function setAgeMinimum(int $ageMinimum): Formation
+    public function setAgeMinimum(int $ageMinimum): void
     {
         $this->ageMinimum = $ageMinimum;
-        return $this;
     }
 
     /**
@@ -143,56 +165,26 @@ class Formation
 
     /**
      * @param DateTime $dateDebut
-     * @return Formation
      */
-    public function setDateDebut(DateTime $dateDebut): Formation
+    public function setDateDebut(DateTime $dateDebut): void
     {
         $this->dateDebut = $dateDebut;
-        return $this;
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
-    public function getDateFin()
+    public function getDateFin(): DateTime
     {
         return $this->dateFin;
     }
 
     /**
-     * @param mixed $dateFin
-     * @return Formation
+     * @param DateTime $dateFin
      */
-    public function setDateFin($dateFin)
+    public function setDateFin(DateTime $dateFin): void
     {
-        $this->date_fin = $dateFin;
-        return $this;
-    }
-
-    /**
-     * @param Institut $institut
-     * @return Formation
-     */
-    public function setInstitut(Institut $institut): Formation
-    {
-        $this->dateDebut = $dateDebut;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInstitut()
-    {
-        return $this->institut;
-    }
-
-    public function isValid(){
-        if($this->dateIsValid && $this->getInstitut){
-            return true;
-        }else{
-            return false;
-        }
+        $this->dateFin = $dateFin;
     }
 
 }

@@ -4,44 +4,68 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
- class StagiaireTest extends TestCase {
+class StagiaireTest extends TestCase
+{
 
+    /**
+     * @var Stagiaire
+     */
     private $stagiaire;
+
+    /**
+     * @var Formation
+     */
     private $formation;
 
+    /**
+     * @throws ReflectionException
+     */
     public function setUp(): void
     {
         // Mock => Stagiaire
-        $stagiaire = $this->createMock(Stagiaire::class);
-        $stagiaire->setAgeStagiaire(21);
+        $this->stagiaire = new Stagiaire();
 
         // Mock Formation
-        $formation = $this->createMock(Formation::class);
-        $formation->setAgeMinimum(16);
+        $this->formation = $this->createMock(Formation::class);
+        $this->formation->expects($this->any())->method("getAgeMinimum")->willReturn(18);
     }
 
-    public function testSetFormationStagiaireSuccess($formation): Boolean
+    /**
+     * @param $formation
+     */
+    public function testSetFormationOk()
     {
-        $this->assertTrue($this->stagiaire->setClasseStagiaire());
+        $this->stagiaire->setAgeStagiaire(20);
+        $this->assertTrue($this->stagiaire->setFormationStagiaire($this->formation));
     }
 
-    public function testSetFormationStagiaireFailureAge($formation): Boolean
+    /**
+     * @param $formation
+     */
+    public function testSetFormationStagiaireFailureAge()
     {
         $this->stagiaire->setAgeStagiaire(15);
-        $this->assertFalse($this->stagiaire->setFormationStagiaire());
+        $this->assertFalse($this->stagiaire->setFormationStagiaire($this->formation));
     }
 
-    public function testSetFormationStagiaireFailureFormation($formation): Boolean
+    public function testSetFormationStagiaireFailureFormation()
     {
-        $this->formation = null;
-        $this->assertFalse($this->stagiaire->setFormationStagiaire());
+        $this->stagiaire->setFormationStagiaire($this->formation);
+        $this->assertFalse($this->stagiaire->setFormationStagiaire($this->formation));
     }
 
-    public function testSave(){
+
+    /**
+     * @throws ReflectionException
+     * @throws Exception
+     */
+    public function testSaveFalseBecauseNoFormation()
+    {
         $dbconnection = $this->createMock(BDConnection::class);
-        $dbconnection->expects($this->once())->method('saveStagiaire')->willReturn(true);
-        $stagiaire->setDatabases($dbconnection);
-        $stagiaire->saveStagiaire();
+        $dbconnection->expects($this->never())->method('saveStagiaire')->willReturn(true);
+
+        $this->stagiaire->setDatabase($dbconnection);
+        $this->assertFalse($this->stagiaire->saveStagiaire());
     }
 
 }

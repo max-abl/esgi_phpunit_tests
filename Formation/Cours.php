@@ -38,86 +38,79 @@ class Cours
      */
     private $date_fin;
 
-
-    // Constructor
+    /**
+     * @param Formateur $formateur
+     * @param Matiere $matiere
+     * @param Salle $salle
+     */
+    public function assignCours(Formateur $formateur, Matiere $matiere, Salle $salle) {
+        $this->formateur = $formateur;
+        $this->matiere = $matiere;
+        $this->salle = $salle;
+    }
 
     /**
-     * Cours constructor.
+     * @return int
      */
-        
-
-    // Getters and setters
-
-    /**
-     * @return mixed
-     */
-    public function getIdCours()
+    public function getIdCours(): int
     {
         return $this->idCours;
     }
 
     /**
-     * @param mixed $idCours
-     * @return Cours
+     * @param int $idCours
      */
-    public function setIdCours($idCours)
+    public function setIdCours(int $idCours): void
     {
         $this->idCours = $idCours;
-        return $this;
     }
 
     /**
-     * @return mixed
+     * @return Formateur
      */
-    public function getIdFormateur()
+    public function getFormateur(): Formateur
     {
-        return $this->idFormateur;
+        return $this->formateur;
     }
 
     /**
-     * @param mixed $idFormateur
-     * @return Cours
+     * @param Formateur $formateur
      */
-    public function setIdFormateur($idFormateur)
+    public function setFormateur(Formateur $formateur): void
     {
-        $this->idFormateur = $idFormateur;
-        return $this;
+        $this->formateur = $formateur;
     }
 
     /**
-     * @return mixed
+     * @return Matiere
      */
-    public function getIdMatiere()
+    public function getMatiere(): Matiere
     {
-        return $this->idMatiere;
+        return $this->matiere;
     }
 
     /**
-     * @param mixed $idMatiere
-     * @return Cours
+     * @param Matiere $matiere
      */
-    public function setIdMatiere($idMatiere)
+    public function setMatiere(Matiere $matiere): void
     {
-        $this->idMatiere = $idMatiere;
-        return $this;
+        $this->matiere = $matiere;
     }
 
     /**
-     * @return mixed
+     * @return Salle
      */
-    public function getIdSalle()
+    public function getSalle(): Salle
     {
-        return $this->idSalle;
+        return $this->salle;
     }
 
     /**
-     * @param mixed $idSalle
-     * @return Cours
+     * @param Salle $salle
      */
-    public function setIdSalle($idSalle)
+    public function setSalle(Salle $salle): void
     {
-        $this->idSalle = $idSalle;
-        return $this;
+        $this->salle = $salle;
     }
 
     /**
@@ -130,36 +123,26 @@ class Cours
 
     /**
      * @param DateTime $date_debut
-     * @return Formation
      */
-    public function setDateDebut(DateTime $date_debut): Formation
+    public function setDateDebut(DateTime $date_debut): void
     {
         $this->date_debut = $date_debut;
-        return $this;
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
-    public function getDateFin()
+    public function getDateFin(): DateTime
     {
         return $this->date_fin;
     }
 
     /**
-     * @param mixed $date_fin
-     * @return Formation
+     * @param DateTime $date_fin
      */
-    public function setDateFin($date_fin)
+    public function setDateFin(DateTime $date_fin): void
     {
         $this->date_fin = $date_fin;
-        return $this;
-    }
-
-    public function assignCours(Formateur $formateur, Matiere $matiere, Salle $salle) {
-        $this->formateur = $formateur;
-        $this->matiere = $matiere;
-        $this->salle = $salle;
     }
     
 }

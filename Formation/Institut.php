@@ -3,12 +3,31 @@
 class Institut
 {
 
+    /**
+     * @var int
+     */
     private $idInstitut;
+
+    /**
+     * @var string
+     */
     private $nom;
+
+    /**
+     * @var string
+     */
     private $adresse;
+
+    /**
+     * @var string
+     */
     private $ville;
+
+    /**
+     * @var string
+     */
     private $codePostal;
-    
+
     /**
      * @var array : Formation
      */
@@ -100,9 +119,5 @@ class Institut
     {
         $this->codePostal = $codePostal;
     }
-
-
-
-
 
 }

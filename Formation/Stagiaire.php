@@ -12,15 +12,15 @@ class Stagiaire
     /**
      * @var int
      */
-    private $idStagiai;
+    private $idStagiaire;
 
     /**
      * @var BDConnection
      */
     private $database;
-    
+
     /**
- * @var string
+     * @var string
      */
     private $nomStagiaire;
 
@@ -54,9 +54,9 @@ class Stagiaire
      * @param $formation
      * @return bool
      */
-    public function setFormationStagiaire($formation): bool
+    public function setFormationStagiaire(Formation $formation): bool
     {
-        if ($formation->ageMinimum > $this->ageStagiaire && !$this->formationStagiaire) {
+        if ($formation->getAgeMinimum() < $this->ageStagiaire && !$this->formationStagiaire) {
             $this->formationStagiaire = $formation;
             return true;
         } else {
@@ -67,68 +67,115 @@ class Stagiaire
     /**
      * @return bool
      */
-    public function isStagiaireValid() : bool {
-        return ($this->formation) ? true : false;
+    public function isStagiaireValid(): bool
+    {
+        return ($this->formationStagiaire) ? true : false;
     }
 
     /**
      * @return bool
+     * @throws Exception
      */
-    public function saveStagiaire() : bool
+    public function saveStagiaire(): bool
     {
-        if($this->isStagiaireValid){
-            $this->databases->saveStagiaire($this);
+        if ($this->isStagiaireValid()) {
+            $this->database->saveStagiaire($this);
+            return true;
         }
+
+        return false;
     }
 
     // Getters and setters
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getIdStagiaire()
+    public function getIdStagiaire(): int
     {
         return $this->idStagiaire;
     }
 
     /**
-     * @param mixed $idStagiaire
+     * @param int $idStagiaire
+     * @return Stagiaire
      */
-    public function setIdStagiaire($idStagiaire): void
+    public function setIdStagiaire(int $idStagiaire): Stagiaire
     {
         $this->idStagiaire = $idStagiaire;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return BDConnection
      */
-    public function getNomStagiaire()
+    public function getDatabase(): BDConnection
+    {
+        return $this->database;
+    }
+
+    /**
+     * @param BDConnection $database
+     * @return Stagiaire
+     */
+    public function setDatabase(BDConnection $database): Stagiaire
+    {
+        $this->database = $database;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomStagiaire(): string
     {
         return $this->nomStagiaire;
     }
 
     /**
-     * @param mixed $nomStagiaire
+     * @param string $nomStagiaire
+     * @return Stagiaire
      */
-    public function setNomStagiaire($nomStagiaire): void
+    public function setNomStagiaire(string $nomStagiaire): Stagiaire
     {
         $this->nomStagiaire = $nomStagiaire;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPrenomStagiaire()
+    public function getPrenomStagiaire(): string
     {
         return $this->prenomStagiaire;
     }
 
     /**
-     * @param mixed $prenomStagiaire
+     * @param string $prenomStagiaire
+     * @return Stagiaire
      */
-    public function setPrenomStagiaire($prenomStagiaire): void
+    public function setPrenomStagiaire(string $prenomStagiaire): Stagiaire
     {
         $this->prenomStagiaire = $prenomStagiaire;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAgeStagiaire(): int
+    {
+        return $this->ageStagiaire;
+    }
+
+    /**
+     * @param int $ageStagiaire
+     * @return Stagiaire
+     */
+    public function setAgeStagiaire(int $ageStagiaire): Stagiaire
+    {
+        $this->ageStagiaire = $ageStagiaire;
+        return $this;
     }
 
 }
