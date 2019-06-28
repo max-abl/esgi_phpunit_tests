@@ -12,7 +12,8 @@ class Stagiaire
     private $idStagiaire;  
     private $nomStagiaire;
     private $prenomStagiaire;
-    private $classeStagiaire;
+    private $formationStagiaire;
+    private $ageStagiaire;
 
     /**
      * @return mixed
@@ -65,19 +66,22 @@ class Stagiaire
     /**
      * @return mixed
      */
-    public function getClasseStagiaire()
+    public function getFormationStagiaire()
     {
-        return $this->classeStagiaire;
+        return $this->formationStagiaire;
     }
 
     /**
-     * @param mixed $classeStagiaire
+     * @param mixed $formationStagiaire
      */
-    public function setClasseStagiaire($classeStagiaire): void
+    public function setClasseStagiaire($formation): Boolean
     {
-        $this->classeStagiaire = $classeStagiaire;
+        if($formation->ageMinimum > $this->ageStagiaire && !$this->formationStagiaire){
+            $this->formationStagiaire = $formation;
+            return true;
+        }else{
+            return false;
+        }
     }
-
-
-
+    
 }

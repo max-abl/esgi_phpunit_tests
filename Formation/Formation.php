@@ -8,12 +8,45 @@
 
 class Formation
 {
-    
+    /**
+     * ID Formation
+     */
     private $idFormation;
-    private $idMatiere;
+
+    /**
+     * Matiere
+     */
+    private $matiere;
+
+    /**
+     * Formateur
+     */
+    private $formateur;
+
+    /**
+     * Dates
+     */
     private $date_debut;
     private $date_fin;
 
+    /**
+     * Age minimum
+     */
+    private $ageMinimum;
+
+
+    // ---------------------------------
+    //  Methods
+    // ---------------------------------
+    public function assign(Formateur $formateur, Matiere $matiere, array $stagiaire) : void {
+        $this->formateur = $formateur;
+        $this->matiere = $matiere;
+        $this->stagiaire = $stagiaire;
+    }
+
+    // ---------------------------------
+    //  GETTERS & SETTERS
+    // ---------------------------------
     /**
      * @return mixed
      */
@@ -85,7 +118,6 @@ class Formation
         $this->date_fin = $date_fin;
         return $this;
     }
-
 
 }
 
